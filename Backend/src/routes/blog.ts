@@ -91,12 +91,29 @@ blogRouter.get("/bulk", authMiddleware, async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
 
-  const allBlogs = await prisma.blog.findMany();
+  try {
+    const allBlogs = await prisma.blog.findMany({
+      select: {
+        title: true,
+        conntent: true,
+        id: true,
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
 
-  return c.json({
-    msg: "Found all Blogs",
-    allBlogs: allBlogs,
-  });
+    return c.json({
+      allBlogs,
+    });
+  } catch {
+    c.status(411);
+    c.json({
+      msg: "Error while getting blogs",
+    });
+  }
 });
 
 blogRouter.get("/:id", authMiddleware, async (c) => {
@@ -110,10 +127,19 @@ blogRouter.get("/:id", authMiddleware, async (c) => {
     where: {
       id: Number(id),
     },
+    select: {
+      id: true,
+      title: true,
+      conntent: true,
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 
   return c.json({
-    msg: "Blog found successfully",
     blog: blog,
   });
 });

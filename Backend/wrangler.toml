@@ -6,8 +6,8 @@ compatibility_flags = ["nodejs_compat"]
 main = "src/index.ts"  # Replace with the actual path to your main Worker script
 
 [vars]
-DATABASE_URL = ""
-JWT_SECRET=""
+DATABASE_URL = "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNGIxNzdmNTItMjAzZS00YjAxLWFkOGQtMTcxNzU0YjExNTczIiwidGVuYW50X2lkIjoiMTQ2M2EzZjcyMDMzOTI1YWUwOTE1MTBiMGUxNTk2MmM2OTBkMDJlZDAzZDgyYzg3OWNmMDIzNWFlMjBlMGU0MiIsImludGVybmFsX3NlY3JldCI6Ijg2MmM5YjZhLTQ4MWYtNDc5OC1iZjIzLTc5ZDc4ZjYwNWQ4NCJ9.Hq4kYR0giMn_f6DReOHYXa9QK-33Okv7q3gAWVCmbh8"
+JWT_SECRET="mysecretkey"
 
 # Uncomment and configure these sections as needed
 # [[kv_namespaces]]

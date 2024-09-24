@@ -8,6 +8,7 @@
     "@nitesh-0/medium-common": "^1.0.0",
     "@prisma/client": "^5.19.1",
     "@prisma/extension-accelerate": "^1.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "hono": "^4.6.2",
     "prisma": "^5.19.1"

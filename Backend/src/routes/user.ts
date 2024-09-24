@@ -25,12 +25,9 @@ userRouter.post("/signup", async (c) => {
       msg: "Incorrect Input",
     });
   }
-
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
-
-  console.log("route is correct");
 
   try {
     const newUser = await prisma.user.create({
