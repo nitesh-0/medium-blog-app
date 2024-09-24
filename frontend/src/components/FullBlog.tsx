@@ -5,7 +5,7 @@ import { Avatar } from "./BlogCard";
 export function FullBlog({ blog }: { blog: Blog }) {
   return (
     <div>
-      <AppBar />
+      <AppBar type="edit" id={blog.id}/>
       <div className="flex justify-center">
         <div className="grid grid-cols-12 px-20 w-full pt-200 max-w-screen-xl pt-12">
           <div className="col-span-8 ">

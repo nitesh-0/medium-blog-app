@@ -13,26 +13,41 @@ export interface Blog {
 
 export const useBlog = ({ id }: { id: string }) => {
   const [loading, setLoading] = useState(true);
-  const [blog, setBlog] = useState<Blog>();
+  const [blog, setBlog] = useState<Blog | undefined>(undefined);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios
-      .get(`${BACKEND_URL}/api/v1/blog/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
+    const fetchBlog = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${BACKEND_URL}/api/v1/blog/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         setBlog(response.data.blog);
+      } catch (err: any) {
+        setError(`Failed to fetch blog: ${err.message || "Unknown error"}`);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    if (id) {
+      fetchBlog();
+    } else {
+      setError("No valid ID provided.");
+      setLoading(false);
+    }
   }, [id]);
 
   return {
     loading,
     blog,
+    error,
   };
 };
+
 
 export function useBlogs() {
   const [loading, setLoading] = useState(true);

@@ -9,7 +9,7 @@ export function Blogs() {
   if (loading) {
     return (
       <div>
-        <AppBar/>
+        <AppBar type="new"/>
         <div className="flex justify-center">
           <div>
             <Skeleton />
@@ -25,7 +25,7 @@ export function Blogs() {
 
   return (
     <div>
-      <AppBar />
+      <AppBar type="new"/>
       <div className="flex justify-center">
         <div className="max-w-xl">
           {blogs.map((blog) => (
