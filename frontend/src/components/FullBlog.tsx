@@ -16,10 +16,7 @@ export function FullBlog({ blog }: { blog: Blog }) {
             <div className="pt-5 ">{blog.conntent}</div>
           </div>
           <div className="col-span-4">
-            <div className="text-slate-900 text-lg">
-                Author
-            </div>
-            
+            <div className="text-slate-900 text-lg">Author</div>
             <div className="flex justify-center items-center">
               <div className="pr-4">
                 <Avatar name={blog.author.name || "Anonymous"} />
